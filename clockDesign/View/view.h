@@ -13,6 +13,7 @@ class View: public QWidget
 public:
     View(int x, int y, int width, int height, QString title);
     ~View();
+    void initRelations(Data* data);
     void paintEvent(QPaintEvent* event);
     void setupUI();
 
@@ -22,6 +23,10 @@ private:
     int height;
     int width;
     QString title;
+    Data* data;
+
+private slots:
+    void update();
 };
 
 #endif // VIEW_H
