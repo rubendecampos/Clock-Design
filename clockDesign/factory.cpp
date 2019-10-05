@@ -6,6 +6,7 @@ Factory::Factory()
     title.sprintf("Clock Design");
     view = new View(100,100,1000,400,title);
     data = new Data();
+    controller = new Controller();
 }
 
 Factory::~Factory(){
@@ -13,6 +14,8 @@ Factory::~Factory(){
 }
 
 void Factory::build(){
-    view->initRelations(data);
+    view->initRelations(controller);
+    controller->initialize();
     controller->initRelations(data);
+    data->initRelations(view);
 }

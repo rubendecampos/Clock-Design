@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_View_t {
     QByteArrayData data[3];
-    char stringdata0[13];
+    char stringdata0[18];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,11 +32,11 @@ struct qt_meta_stringdata_View_t {
 static const qt_meta_stringdata_View_t qt_meta_stringdata_View = {
     {
 QT_MOC_LITERAL(0, 0, 4), // "View"
-QT_MOC_LITERAL(1, 5, 6), // "update"
-QT_MOC_LITERAL(2, 12, 0) // ""
+QT_MOC_LITERAL(1, 5, 11), // "updateClock"
+QT_MOC_LITERAL(2, 17, 0) // ""
 
     },
-    "View\0update\0"
+    "View\0updateClock\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -68,7 +68,7 @@ void View::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         View *_t = static_cast<View *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->update(); break;
+        case 0: _t->updateClock(); break;
         default: ;
         }
     }
@@ -91,6 +91,8 @@ void *View::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_View.stringdata0))
         return static_cast<void*>(this);
+    if (!strcmp(_clname, "Observer"))
+        return static_cast< Observer*>(this);
     return QWidget::qt_metacast(_clname);
 }
 

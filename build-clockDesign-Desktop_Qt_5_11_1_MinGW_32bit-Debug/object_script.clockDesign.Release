@@ -1,0 +1,15 @@
+INPUT(
+./release\main.o
+./release\factory.o
+./release\controller.o
+./release\view.o
+./release\data.o
+./release\clock.o
+./release\observer.o
+./release\digitalclock.o
+./release\xf.o
+./release\xfevent.o
+./release\xftimer.o
+./release\animation1.o
+./release\moc_view.o
+);

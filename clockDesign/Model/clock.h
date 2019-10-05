@@ -5,19 +5,25 @@
 
 //proportion of the dots and the clock hands
 const int ratio = 20;
+const int SPEED = 2;
 
 class Clock
 {
 public:
     Clock(int posX, int posY, int length, int clockH1, int clockH2);
-    void setClockH1(int pos);
-    void setClockH2(int pos);
+    void setClockHand(int clockHand, int pos);
     void setClock(int hand1, int hand2);
+    void setClockLeft(int clockHand);
+    void setClockRight(int clockHand);
+    void setClockUp(int clockHand);
+    void setClockDown(int clockHand);
     void setClockWise(bool cw);
-    int getClockH1();
-    int getClockH2();
+    int getClockHand(int clockHand);
     bool getClockWise();
     void draw(QPainter* painter);
+    void move();
+    bool getIsMoving();
+    void startMoving();
 
 private:
     //Position of the clock
@@ -26,9 +32,12 @@ private:
     //Position of the clock hands
     int clockHand_1;
     int clockHand_2;
+    int clockHandFinal_1;
+    int clockHandFinal_2;
 
     bool clockWise;         //rotation clockWise?
     int length;             //length of the clock
+    bool isMoving;            //Indicate if a clock is moving
 
 };
 

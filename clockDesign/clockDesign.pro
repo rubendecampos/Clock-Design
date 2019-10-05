@@ -20,11 +20,24 @@ SOURCES += \
     Controller\controller.cpp \
     View\view.cpp \
     Model\data.cpp \
-    Model/clock.cpp
+    Model/clock.cpp \
+    View/observer.cpp \
+    Controller/digitalclock.cpp \
+    XF/xf.cpp \
+    XF/xfevent.cpp \
+    XF/xftimer.cpp \
+    Controller/animation1.cpp
 
 HEADERS += \
     factory.h \
     Controller\controller.h \
     View\view.h \
     Model\data.h \
-    Model/clock.h
+    Model/clock.h \
+    View/observer.h \
+    Controller/digitalclock.h \
+    XF/ism.h \
+    XF/xf.h \
+    XF/xfevent.h \
+    XF/xftimer.h \
+    Controller/animation1.h

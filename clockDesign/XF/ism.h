@@ -5,7 +5,7 @@ class XFEvent;
 class ISM
 {
 public:
-    virtual bool processEvent(XFEvent* p1) = 0;
+    virtual bool processEvent(XFEvent* ev) = 0;
 };
 
 

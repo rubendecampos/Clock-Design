@@ -10,7 +10,7 @@ class XFTimer;
 
 class XF : public QApplication
 {
-    friend class XFTimer;
+/*    friend class XFTimer;
     Q_OBJECT
 public:
     static XF& getInstance();
@@ -27,16 +27,16 @@ signals:
 
 private slots:
     void onDispatch(XFEvent* p1);
-
+*/
 private /*methods*/:
-    XF();
+ /*   XF();
     XF(const XF&);
     void operator=(const XF&);
     int fake;
     virtual ~XF();
 
     static XF* instance;
-    QMap<int,XFTimer*> timerList;
+    QMap<int,XFTimer*> timerList;*/
 };
 
 #endif // XF_H

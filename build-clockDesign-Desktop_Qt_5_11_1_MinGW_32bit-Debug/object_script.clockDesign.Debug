@@ -1,0 +1,15 @@
+INPUT(
+./debug\main.o
+./debug\factory.o
+./debug\controller.o
+./debug\view.o
+./debug\data.o
+./debug\clock.o
+./debug\observer.o
+./debug\digitalclock.o
+./debug\xf.o
+./debug\xfevent.o
+./debug\xftimer.o
+./debug\animation1.o
+./debug\moc_view.o
+);
