@@ -5,17 +5,22 @@
 #include <QString>
 #include <QPainter>
 #include "Model\data.h"
+#include <QTimer>
+#include "observer.h"
+#include "Controller\controller.h"
 
-class View: public QWidget
+class View: public QWidget, public Observer
 {
     Q_OBJECT
 
 public:
     View(int x, int y, int width, int height, QString title);
     ~View();
-    void initRelations(Data* data);
+    void initRelations(Controller* controller);
     void paintEvent(QPaintEvent* event);
     void setupUI();
+    void changed();
+    void stop();
 
 private:
     int x;
@@ -23,10 +28,11 @@ private:
     int height;
     int width;
     QString title;
-    Data* data;
+    Controller* pController;
+    QTimer timer;
 
 private slots:
-    void update();
+    void updateClock();
 };
 
 #endif // VIEW_H

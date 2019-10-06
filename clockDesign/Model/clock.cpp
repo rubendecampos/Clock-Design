@@ -7,39 +7,76 @@ Clock::Clock(int posX, int posY, int length, int clockH1, int clockH2)
     this->length = length;
     this->clockHand_1 = clockH1;
     this->clockHand_2 = clockH2;
+    this->clockHandFinal_1 = clockH1;
+    this->clockHandFinal_2 = clockH2;
     this->clockWise = true;
+    this->isMoving = false;
 }
 
-void Clock::setClockH1(int pos){
-    this->clockHand_1 = pos;
+void Clock::setClockHand(int clockHand, int pos)
+{
+    switch(clockHand)
+    {
+    case 1:
+        this->clockHandFinal_1 = pos;
+        break;
+    case 2:
+        this->clockHandFinal_2 = pos;
+        break;
+    }
+
 }
 
-void Clock::setClockH2(int pos){
-    this->clockHand_2 = pos;
+void Clock::setClock(int hand1, int hand2)
+{
+    this->clockHandFinal_1 = hand1;
+    this->clockHandFinal_2 = hand2;
 }
 
-void Clock::setClock(int hand1, int hand2){
-    this->clockHand_1 = hand1;
-    this->clockHand_2 = hand2;
+
+void Clock::setClockLeft(int clockHand)
+{
+    setClockHand(clockHand,90);
 }
 
-void Clock::setClockWise(bool cw){
-    this->clockWise = clockWise;
+void Clock::setClockRight(int clockHand)
+{
+    setClockHand(clockHand,270);
 }
 
-int Clock::getClockH1(){
-    return clockHand_1;
+void Clock::setClockUp(int clockHand)
+{
+    setClockHand(clockHand,180);
 }
 
-int Clock::getClockH2(){
-    return clockHand_2;
+void Clock::setClockDown(int clockHand)
+{
+    setClockHand(clockHand,0);
 }
 
-bool Clock::getClockWise(){
+void Clock::setClockWise(bool cw)
+{
+    this->clockWise = cw;
+}
+
+int Clock::getClockHand(int clockHand){
+    switch(clockHand){
+    case 1:
+        return clockHand_1;
+        break;
+    case 2:
+        return clockHand_2;
+        break;
+    }
+}
+
+bool Clock::getClockWise()
+{
     return clockWise;
 }
 
-void Clock::draw(QPainter* painter){
+void Clock::draw(QPainter* painter)
+{
     int handWidth = length/ratio;
     int hourDot = length/ratio;
 
@@ -77,4 +114,69 @@ void Clock::draw(QPainter* painter){
 
     //Reset the position
     painter->translate(-posX,-posY);
+}
+
+void Clock::move(){
+    if(clockHandFinal_1 != clockHand_1)
+    {
+        isMoving = true;
+
+        //Rotation clockWise or not
+        if(clockWise)
+        {
+            clockHand_1 += SPEED;
+        }else
+        {
+            clockHand_1 -= SPEED;
+        }
+
+        //Stay between 0 and 360
+        if(clockHand_1 < 0)
+        {
+            clockHand_1 = 360 + clockHand_1;
+        }
+        clockHand_1 %= 360;
+    }
+    else
+    {
+        isMoving = false;
+    }
+
+    if(clockHandFinal_2 != clockHand_2)
+    {
+        isMoving = true;
+
+        //Rotation clockWise or not
+        if(clockWise)
+        {
+            clockHand_2 += SPEED;
+        }
+        else
+        {
+            clockHand_2 -= SPEED;
+        }
+
+        //Stay between 0 and 360
+        if(clockHand_2 < 0)
+        {
+            clockHand_2 = 360 + clockHand_2;
+        }
+        clockHand_2 %= 360;
+    }
+    else
+    {
+        if(isMoving == false){
+            isMoving = false;
+        }
+    }
+}
+
+bool Clock::getIsMoving()
+{
+    return isMoving;
+}
+
+void Clock::startMoving()
+{
+    isMoving = true;
 }

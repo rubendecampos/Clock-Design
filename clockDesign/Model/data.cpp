@@ -1,45 +1,103 @@
 #include "data.h"
 
-Data::Data()
+Data::Data(int width, int height)
 {
     nbLine = 5;
     nbColumn = 10;
+    int offsetW = (width-nbColumn*(clockLength+5))/2;
+    int offsetH = (height-nbLine*(clockLength+5))/2;
 
-    for(int line=0;line<nbLine;line++){
-        for(int column=0;column<nbColumn;column++){
-            clock[line][column] = new Clock(40+(48+5)*column,40+(48+5)*line,clockLength,0,180);
+    for(int line=0;line<nbLine;line++)
+    {
+        for(int column=0;column<nbColumn;column++)
+        {
+            clock[line][column] = new Clock(offsetW+(clockLength+5)*column,
+                                offsetH+(clockLength+5)*line,clockLength,0,0);
         }
     }
-
-    QObject::connect(&timer, SIGNAL(timeout()), this, SLOT(moveClock()));
-    timer.start(1000);
 }
 
-Data::~Data(){
+Data::~Data()
+{
 
 }
 
-void Data::drawALL(QPainter* painter){
-    for(int line=0;line<nbLine;line++){
-        for(int column=0;column<nbColumn;column++){
+void Data::initRelations(Observer *observer)
+{
+    this->pObserver = observer;
+}
+
+void Data::drawALL(QPainter* painter)
+{
+    for(int line=0;line<nbLine;line++)
+    {
+        for(int column=0;column<nbColumn;column++)
+        {
             clock[line][column]->draw(painter);
         }
     }
 }
 
-void Data::drawColumn(QPainter* painter){
+Clock* Data::getClock(int lineIndex, int columnIndex)
+{
 
-}
-
-void Data::drawLine(QPainter* painter){
-
-}
-
-Clock* Data::getClock(int lineIndex, int columnIndex){
     return clock[lineIndex][columnIndex];
 }
 
-void Data::moveClock(){
-    int i;
-    i++;
+bool Data::getClockMoved(){
+    return clockMoved;
+}
+
+int Data::getNbColumn(){
+    return nbColumn;
+}
+
+int Data::getNbLine(){
+    return nbLine;
+}
+
+void Data::updateClock()
+{
+    clockMoved = false;
+
+    for(int line = 0;line<this->nbLine;line++)
+    {
+        for(int column = 0;column<this->nbColumn;column++)
+        {
+            //If the clock is still moving
+            if(clock[line][column]->getIsMoving())
+            {
+                clock[line][column]->move();
+                clockMoved = true;
+            }
+        }
+    }
+
+    if(clockMoved){
+        pObserver->changed();
+    }
+}
+
+void Data::startAllClock(){
+    for(int line=0;line<nbLine;line++){
+        for(int column=0;column<nbColumn;column++){
+            clock[line][column]->startMoving();
+        }
+    }
+}
+
+void Data::setAllClock(int hand1, int hand2){
+    for(int line=0;line<nbLine;line++){
+        for(int column=0;column<nbColumn;column++){
+            clock[line][column]->setClock(hand1,hand2);
+        }
+    }
+}
+
+void Data::setAllClockWise(bool clockWise){
+    for(int line=0;line<nbLine;line++){
+        for(int column=0;column<nbColumn;column++){
+            clock[line][column]->setClockWise(clockWise);
+        }
+    }
 }

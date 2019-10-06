@@ -6,6 +6,9 @@
 #include "View\view.h"
 #include <QString>
 
+const int SCREEN_WIDTH = 1000;
+const int SCREEN_HEIGHT = 400;
+
 class Factory
 {
 public:
