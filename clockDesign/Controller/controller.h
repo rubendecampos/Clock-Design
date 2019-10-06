@@ -12,7 +12,7 @@ class Animation1;
 class Controller: public ISM
 {
 public:
-    enum CEVENT {evAnim1,evWait1,evTimeout1,evDone};
+    enum CEVENT {evAnim1,evWait,evTimeout,evDone};
     enum CSTATE {ST_WAIT,ST_ANIM1,ST_WAIT1};
 
     Controller();

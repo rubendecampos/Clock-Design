@@ -56,7 +56,7 @@ void Clock::setClockDown(int clockHand)
 
 void Clock::setClockWise(bool cw)
 {
-    this->clockWise = clockWise;
+    this->clockWise = cw;
 }
 
 int Clock::getClockHand(int clockHand){

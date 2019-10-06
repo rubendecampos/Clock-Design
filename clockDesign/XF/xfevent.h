@@ -6,7 +6,7 @@ class XFTimer;
 
 class XFEvent
 {
-/*public:
+public:
     XFEvent();
     virtual ~XFEvent();
     void setTarget(ISM* p1);
@@ -29,7 +29,7 @@ private:
     int delay;
     int repeatCount;
     bool doNotDelete;
-    XFTimer* xft;*/
+    XFTimer* xft;
 
 };
 

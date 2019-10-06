@@ -10,7 +10,7 @@ const int clockLength = 48;
 class Data
 {
 public:
-    Data();
+    Data(int width, int height);
     ~Data();
     void initRelations(Observer* observer);
     void drawALL(QPainter* painter);
@@ -21,6 +21,7 @@ public:
     void updateClock();
     void startAllClock();
     void setAllClock(int hand1, int hand2);
+    void setAllClockWise(bool clockWise);
 
 private:
     Clock* clock[5][10];

@@ -5,7 +5,7 @@
 #include "xfevent.h"
 #include "xftimer.h"
 #include "ism.h"
-/*
+
 XF* XF::instance = nullptr;
 
 XF::XF() : QApplication(fake,(char**) nullptr)
@@ -96,4 +96,4 @@ void XF::onDispatch(XFEvent *p1)
             }
         }
     }
-}*/
+}

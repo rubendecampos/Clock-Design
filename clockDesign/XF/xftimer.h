@@ -7,7 +7,7 @@ class XFEvent;
 
 class XFTimer  : public QObject
 {
- /*   Q_OBJECT
+    Q_OBJECT
 public:
     XFTimer();
     virtual ~XFTimer();
@@ -21,7 +21,7 @@ public slots:
     void onTimeout();
 private:
     QTimer* t;
-    XFEvent* e;*/
+    XFEvent* e;
 
 };
 

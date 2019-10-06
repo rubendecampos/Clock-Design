@@ -1,6 +1,6 @@
 #include "xfevent.h"
 #include "xftimer.h"
-/*
+
 XFEvent::XFEvent()
 {
     target = nullptr;
@@ -88,4 +88,4 @@ void XFEvent::cancel()
         xft=nullptr;
     }
 }
-*/
+

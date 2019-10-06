@@ -1,6 +1,6 @@
 #include "xftimer.h"
 #include "xf.h"
-/*
+
 XFTimer::XFTimer()
 {
     t = nullptr;
@@ -46,4 +46,4 @@ void XFTimer::onTimeout()
 {
     XF::getInstance().pushElapsedEvent(e);
 }
-*/
+

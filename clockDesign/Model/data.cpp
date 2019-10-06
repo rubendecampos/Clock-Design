@@ -1,16 +1,18 @@
 #include "data.h"
 
-Data::Data()
+Data::Data(int width, int height)
 {
     nbLine = 5;
     nbColumn = 10;
+    int offsetW = (width-nbColumn*(clockLength+5))/2;
+    int offsetH = (height-nbLine*(clockLength+5))/2;
 
     for(int line=0;line<nbLine;line++)
     {
         for(int column=0;column<nbColumn;column++)
         {
-            clock[line][column] = new Clock(40+(clockLength+5)*column,
-                                40+(clockLength+5)*line,clockLength,0,0);
+            clock[line][column] = new Clock(offsetW+(clockLength+5)*column,
+                                offsetH+(clockLength+5)*line,clockLength,0,0);
         }
     }
 }
@@ -88,6 +90,14 @@ void Data::setAllClock(int hand1, int hand2){
     for(int line=0;line<nbLine;line++){
         for(int column=0;column<nbColumn;column++){
             clock[line][column]->setClock(hand1,hand2);
+        }
+    }
+}
+
+void Data::setAllClockWise(bool clockWise){
+    for(int line=0;line<nbLine;line++){
+        for(int column=0;column<nbColumn;column++){
+            clock[line][column]->setClockWise(clockWise);
         }
     }
 }

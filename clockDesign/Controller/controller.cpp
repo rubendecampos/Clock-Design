@@ -10,11 +10,11 @@ Controller::Controller()
 
 void Controller::initialize()
 {
-  /*  state = ST_WAIT;
+    state = ST_WAIT;
     XFEvent* ev = new XFEvent();
     ev->setID(evAnim1);
     ev->setTarget(this);
-    XF::getInstance().pushEvent(ev);*/
+    XF::getInstance().pushEvent(ev);
 }
 
 void Controller::initRelations(Data* data)
@@ -23,7 +23,7 @@ void Controller::initRelations(Data* data)
 }
 
 bool Controller::processEvent(XFEvent *ev){
-/*    bool retval = false;
+    bool retval = false;
     CSTATE oldState = state;
 
     //transition switch
@@ -36,12 +36,12 @@ bool Controller::processEvent(XFEvent *ev){
         }
         break;
     case ST_ANIM1:
-        if(ev->getID() == evWait1){
+        if(ev->getID() == evWait){
             state = ST_WAIT1;
         }
         break;
     case ST_WAIT1:
-        if(ev->getID() == evTimeout1){
+        if(ev->getID() == evTimeout){
             state = ST_ANIM1;
         }
         break;
@@ -50,6 +50,8 @@ bool Controller::processEvent(XFEvent *ev){
     if (oldState != state)
     {
         //action switch
+        XFEvent* ev = new XFEvent();
+
         switch (state)
         {
         case ST_WAIT:
@@ -59,19 +61,19 @@ bool Controller::processEvent(XFEvent *ev){
             break;
         case ST_ANIM1:
             anim1->animate();
-            ev->setID(evWait1);
+            ev->setID(evWait);
             ev->setTarget(this);
             XF::getInstance().pushEvent(ev);
             break;
         case ST_WAIT1:
-            ev->setID(evTimeout1);
+            ev->setID(evTimeout);
             ev->setTarget(this);
             ev->setDelay(valueTimer);
             XF::getInstance().pushEvent(ev);
         }
         retval = true;
     }
-    return retval;*/
+    return retval;
 }
 
 //Modifie the value of the timer, used principaly by

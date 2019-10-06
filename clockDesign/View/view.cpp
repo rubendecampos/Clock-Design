@@ -33,7 +33,7 @@ void View::setupUI(){
 
 void View::updateClock()
 {
-    pController->anim1->animate();
+    //pController->anim1->animate();
     /*pController->digClock->set_5(0);
     pController->digClock->set_7(1);
     pController->digClock->set_8(2);

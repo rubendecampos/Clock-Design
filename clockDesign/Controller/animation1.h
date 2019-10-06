@@ -11,6 +11,7 @@ public:
     enum STATE {ST_INIT, ST_START, ST_WAVE, ST_END};
     Animation1(Controller* host);
     void animate();
+    bool isDone();
 
 private:
     Controller* host;
