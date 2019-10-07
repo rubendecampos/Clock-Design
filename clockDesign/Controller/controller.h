@@ -3,6 +3,8 @@
 
 #include "Model\data.h"
 #include "XF/ism.h"
+#include "XF/xf.h"
+#include "XF/xfevent.h"
 #include "digitalclock.h"
 #include "animation1.h"
 
@@ -12,8 +14,6 @@ class Animation1;
 class Controller: public ISM
 {
 public:
-    enum CEVENT {evAnim1,evWait,evTimeout,evDone};
-    enum CSTATE {ST_WAIT,ST_ANIM1,ST_WAIT1};
 
     Controller();
     void initialize();
@@ -26,7 +26,7 @@ public:
     Animation1* anim1;
 int valueTimer = 50;
 private:
-    CSTATE state;
+    XF::CSTATE state;
 
 };
 

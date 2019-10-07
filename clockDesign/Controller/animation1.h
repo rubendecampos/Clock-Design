@@ -12,6 +12,7 @@ public:
     Animation1(Controller* host);
     void animate();
     bool isDone();
+    void setIsDone(bool isDone);
 
 private:
     Controller* host;

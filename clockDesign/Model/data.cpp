@@ -4,6 +4,7 @@ Data::Data(int width, int height)
 {
     nbLine = 5;
     nbColumn = 10;
+    int clockLength = width/proportion;
     int offsetW = (width-nbColumn*(clockLength+5))/2;
     int offsetH = (height-nbLine*(clockLength+5))/2;
 

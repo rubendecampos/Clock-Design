@@ -15,4 +15,5 @@ INPUT(
 ./release\moc_view.o
 ./release\moc_xf.o
 ./release\moc_xftimer.o
+./release\moc_button.o
 );
