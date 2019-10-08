@@ -1,48 +1,54 @@
 #include "controller.h"
-#include "XF/xf.h"
-#include "XF/xfevent.h"
 
 Controller::Controller()
 {
     digClock = new DigitalClock(this);
     anim1 = new Animation1(this);
+    countDown = new Countdown(this);
 }
 
 void Controller::initialize()
 {
-    state = ST_WAIT;
-    XFEvent* ev = new XFEvent();
-    ev->setID(evAnim1);
-    ev->setTarget(this);
-    XF::getInstance().pushEvent(ev);
+    state = XF::ST_WAIT;
 }
 
+//void Controller::initRelations(Data* data, View* view)
 void Controller::initRelations(Data* data)
 {
     this->pData = data;
+    //this->pView = view;
 }
 
 bool Controller::processEvent(XFEvent *ev){
     bool retval = false;
-    CSTATE oldState = state;
+    XF::CSTATE oldState = state;
+
+    //Exit
+    if(ev->getID() == XF::evExit){
+        //View::stop();
+        pView->stop();
+    }
 
     //transition switch
     switch (state)
     {
-    case ST_WAIT:
-        if (ev->getID() == evAnim1)
+    case XF::ST_WAIT:
+        if (ev->getID() == XF::evAnim1)
         {
-            state = ST_ANIM1;
+            state = XF::ST_ANIM1;
         }
         break;
-    case ST_ANIM1:
-        if(ev->getID() == evWait){
-            state = ST_WAIT1;
+    case XF::ST_ANIM1:
+        if(ev->getID() == XF::evWait){
+            state = XF::ST_WAIT1;
+        }
+        if(ev->getID() == XF::evDone){
+            state = XF::ST_WAIT;
         }
         break;
-    case ST_WAIT1:
-        if(ev->getID() == evTimeout){
-            state = ST_ANIM1;
+    case XF::ST_WAIT1:
+        if(ev->getID() == XF::evTimeout){
+            state = XF::ST_ANIM1;
         }
         break;
     }
@@ -54,19 +60,23 @@ bool Controller::processEvent(XFEvent *ev){
 
         switch (state)
         {
-        case ST_WAIT:
-            ev->setID(evAnim1);
-            ev->setTarget(this);
-            XF::getInstance().pushEvent(ev);
+        case XF::ST_WAIT:
             break;
-        case ST_ANIM1:
-            anim1->animate();
-            ev->setID(evWait);
-            ev->setTarget(this);
-            XF::getInstance().pushEvent(ev);
+        case XF::ST_ANIM1:
+            if(countDown->isDone()){
+                countDown->setIsDone(false);
+                ev->setID(XF::evDone);
+                ev->setTarget(this);
+                XF::getInstance().pushEvent(ev);
+            }else{
+                countDown->animate();
+                ev->setID(XF::evWait);
+                ev->setTarget(this);
+                XF::getInstance().pushEvent(ev);
+            }
             break;
-        case ST_WAIT1:
-            ev->setID(evTimeout);
+        case XF::ST_WAIT1:
+            ev->setID(XF::evTimeout);
             ev->setTarget(this);
             ev->setDelay(valueTimer);
             XF::getInstance().pushEvent(ev);

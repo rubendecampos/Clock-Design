@@ -8,6 +8,9 @@
 #include <QTimer>
 #include "observer.h"
 #include "Controller\controller.h"
+#include "Button\button.h"
+
+class Button;
 
 class View: public QWidget, public Observer
 {
@@ -22,6 +25,7 @@ public:
     void changed();
     void stop();
 
+
 private:
     int x;
     int y;
@@ -30,6 +34,8 @@ private:
     QString title;
     Controller* pController;
     QTimer timer;
+    Button* animation1;
+    Button* exit;
 
 private slots:
     void updateClock();
