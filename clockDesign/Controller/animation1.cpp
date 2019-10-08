@@ -75,3 +75,7 @@ void Animation1::animate(){
 bool Animation1::isDone(){
     return animDone;
 }
+
+void Animation1::setIsDone(bool isDone){
+    animDone = isDone;
+}

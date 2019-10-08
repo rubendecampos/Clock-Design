@@ -6,6 +6,8 @@ View::View(int x, int y, int width, int height, QString title)
     this->y = y;
     this->height = height;
     this->width = width;
+    animation1 = new Button(this);
+    exit = new Button(this);
     setupUI();
 
     QObject::connect(&timer,SIGNAL(timeout()),this,SLOT(updateClock()));
@@ -18,6 +20,8 @@ View::~View(){
 
 void View::initRelations(Controller* controller){
     this->pController = controller;
+    animation1->initEvent(XF::evAnim1,pController);
+    exit->initEvent(XF::evExit,pController);
 }
 
 void View::paintEvent(QPaintEvent *event){
@@ -26,8 +30,12 @@ void View::paintEvent(QPaintEvent *event){
 }
 
 void View::setupUI(){
-    this->setGeometry(x,y,width,height);
+    this->showFullScreen();
     this->setWindowTitle(title);
+    animation1->setGeometry(100,height/2-40,100,40);
+    animation1->setText("animation 1");
+    exit->setGeometry(100,height/2+40,100,40);
+    exit->setText("Exit");
     this->setVisible(true);
 }
 

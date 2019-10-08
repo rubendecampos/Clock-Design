@@ -5,7 +5,7 @@
 #include "View\observer.h"
 #include <QPainter>
 
-const int clockLength = 48;
+const int proportion = 18;
 
 class Data
 {

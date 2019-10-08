@@ -27,7 +27,8 @@ SOURCES += \
     XF/xfevent.cpp \
     XF/xftimer.cpp \
     Controller/animation1.cpp \
-    Button/button.cpp
+    Button/button.cpp \
+    Controller/countdown.cpp
 
 HEADERS += \
     factory.h \
@@ -42,4 +43,5 @@ HEADERS += \
     XF/xfevent.h \
     XF/xftimer.h \
     Controller/animation1.h \
-    Button/button.h
+    Button/button.h \
+    Controller/countdown.h
