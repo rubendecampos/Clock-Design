@@ -9,8 +9,10 @@ Clock::Clock(int posX, int posY, int length, int clockH1, int clockH2)
     this->clockHand_2 = clockH2;
     this->clockHandFinal_1 = clockH1;
     this->clockHandFinal_2 = clockH2;
-    this->clockWise = true;
+    this->clockWise1 = true;
+    this->clockWise2 = true;
     this->isMoving = false;
+    this->fastway = false;
 }
 
 void Clock::setClockHand(int clockHand, int pos)
@@ -54,9 +56,10 @@ void Clock::setClockDown(int clockHand)
     setClockHand(clockHand,0);
 }
 
-void Clock::setClockWise(bool cw)
+void Clock::setClockWise(bool cw1, bool cw2)
 {
-    this->clockWise = cw;
+    this->clockWise1 = cw1;
+    this->clockWise2 = cw2;
 }
 
 int Clock::getClockHand(int clockHand){
@@ -72,7 +75,7 @@ int Clock::getClockHand(int clockHand){
 
 bool Clock::getClockWise()
 {
-    return clockWise;
+    return clockWise1;              //Not use yet, to modify
 }
 
 void Clock::draw(QPainter* painter)
@@ -117,12 +120,31 @@ void Clock::draw(QPainter* painter)
 }
 
 void Clock::move(){
+    if(fastway){
+        //for clockwise1
+        if(clockHandFinal_1>clockHand_1){
+            int dist = clockHandFinal_1-clockHand_1;
+            dist>180?clockWise1=false:clockWise1=true;
+        }else{
+            int dist = clockHand_1-clockHandFinal_1;
+            dist>180?clockWise1=true:clockWise1=false;
+        }
+        //for clokwise2
+        if(clockHandFinal_2>clockHand_2){
+            int dist = clockHandFinal_2-clockHand_2;
+            dist>180?clockWise2=false:clockWise2=true;
+        }else{
+            int dist = clockHand_2-clockHandFinal_2;
+            dist>180?clockWise2=true:clockWise2=false;
+        }
+    }
+
     if(clockHandFinal_1 != clockHand_1)
     {
         isMoving = true;
 
         //Rotation clockWise or not
-        if(clockWise)
+        if(clockWise1)
         {
             clockHand_1 += SPEED;
         }else
@@ -147,7 +169,7 @@ void Clock::move(){
         isMoving = true;
 
         //Rotation clockWise or not
-        if(clockWise)
+        if(clockWise2)
         {
             clockHand_2 += SPEED;
         }
@@ -179,4 +201,8 @@ bool Clock::getIsMoving()
 void Clock::startMoving()
 {
     isMoving = true;
+}
+
+void Clock::setFastWay(bool fastway){
+    this->fastway = fastway;
 }

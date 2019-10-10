@@ -5,7 +5,7 @@ DigitalClock::DigitalClock(Controller* host)
     this->host = host;
 }
 
-void DigitalClock::set_0(int digit)
+void DigitalClock::set_0(double digit)
 {
     int offset = digit * 2;
 
@@ -29,7 +29,7 @@ void DigitalClock::set_0(int digit)
     host->pData->getClock(3,2+offset)->setClockUp(2);
 }
 
-void DigitalClock::set_1(int digit)
+void DigitalClock::set_1(double digit)
 {
     int offset = digit * 2;
 
@@ -53,7 +53,7 @@ void DigitalClock::set_1(int digit)
     host->pData->getClock(3,2+offset)->setClockUp(2);
 }
 
-void DigitalClock::set_2(int digit)
+void DigitalClock::set_2(double digit)
 {
     int offset = digit * 2;
 
@@ -77,7 +77,7 @@ void DigitalClock::set_2(int digit)
     host->pData->getClock(3,2+offset)->setClockLeft(2);
 }
 
-void DigitalClock::set_3(int digit)
+void DigitalClock::set_3(double digit)
 {
     int offset = digit * 2;
 
@@ -101,7 +101,7 @@ void DigitalClock::set_3(int digit)
     host->pData->getClock(3,2+offset)->setClockUp(2);
 }
 
-void DigitalClock::set_4(int digit)
+void DigitalClock::set_4(double digit)
 {
     int offset = digit * 2;
 
@@ -125,7 +125,7 @@ void DigitalClock::set_4(int digit)
     host->pData->getClock(3,2+offset)->setClockUp(2);
 }
 
-void DigitalClock::set_5(int digit)
+void DigitalClock::set_5(double digit)
 {
     int offset = digit * 2;
 
@@ -149,7 +149,7 @@ void DigitalClock::set_5(int digit)
     host->pData->getClock(3,2+offset)->setClockLeft(2);
 }
 
-void DigitalClock::set_6(int digit)
+void DigitalClock::set_6(double digit)
 {
     int offset = digit * 2;
 
@@ -173,7 +173,7 @@ void DigitalClock::set_6(int digit)
     host->pData->getClock(3,2+offset)->setClockLeft(2);
 }
 
-void DigitalClock::set_7(int digit)
+void DigitalClock::set_7(double digit)
 {
     int offset = digit * 2;
 
@@ -197,7 +197,7 @@ void DigitalClock::set_7(int digit)
     host->pData->getClock(3,2+offset)->setClockUp(2);
 }
 
-void DigitalClock::set_8(int digit)
+void DigitalClock::set_8(double digit)
 {
     int offset = digit * 2;
 
@@ -221,7 +221,7 @@ void DigitalClock::set_8(int digit)
     host->pData->getClock(3,2+offset)->setClockUp(2);
 }
 
-void DigitalClock::set_9(int digit)
+void DigitalClock::set_9(double digit)
 {
     int offset = digit * 2;
 
