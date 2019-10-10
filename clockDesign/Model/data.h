@@ -5,7 +5,7 @@
 #include "View\observer.h"
 #include <QPainter>
 
-const int proportion = 20;
+const int proportion = 18;
 
 class Data
 {
@@ -21,7 +21,8 @@ public:
     void updateClock();
     void startAllClock();
     void setAllClock(int hand1, int hand2);
-    void setAllClockWise(bool clockWise);
+    void setAllClockWise(bool cw1, bool cw2);
+    void setFastWay(bool fastWay);
 
 private:
     Clock* clock[5][10];

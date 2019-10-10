@@ -13,8 +13,8 @@ class XF : public QApplication
     friend class XFTimer;
     Q_OBJECT
 public:
-    enum CEVENT {evAnim1,evWait,evTimeout,evDone,evExit};
-    enum CSTATE {ST_WAIT,ST_ANIM1,ST_WAIT1};
+    enum CEVENT {evAnim1,evWait,evTimeout,evDone,evExit,evCountdown};
+    enum CSTATE {ST_WAIT,ST_ANIM1,ST_WAIT1,ST_COUNTDOWN,ST_WAIT_CD};
 
     static XF& getInstance();
     void pushEvent(XFEvent* p1);

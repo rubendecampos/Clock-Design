@@ -10,6 +10,8 @@
 #include "Controller\controller.h"
 #include "Button\button.h"
 
+class Button;
+
 class View: public QWidget, public Observer
 {
     Q_OBJECT
@@ -23,6 +25,7 @@ public:
     void changed();
     void stop();
 
+
 private:
     int x;
     int y;
@@ -33,6 +36,7 @@ private:
     QTimer timer;
     Button* animation1;
     Button* exit;
+    Button* countDown;
 
 private slots:
     void updateClock();

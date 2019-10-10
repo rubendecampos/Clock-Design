@@ -49,7 +49,8 @@ void Animation1::animate(){
         switch (state){
         case ST_START:
             host->pData->setAllClock(0,180);
-            host->pData->setAllClockWise(true);
+            host->pData->setFastWay(false);
+            host->pData->setAllClockWise(true,true);
             host->pData->startAllClock();
             host->setValueTimer(50);
             break;
@@ -60,11 +61,11 @@ void Animation1::animate(){
                 host->pData->getClock(line,column)->startMoving();
             }
             column--;
-            host->setValueTimer(500);
+            host->setValueTimer(200);
             break;
         case ST_END:
             host->pData->setAllClock(0,0);
-            host->pData->setAllClockWise(false);
+            host->pData->setFastWay(true);
             host->pData->startAllClock();
             host->setValueTimer(50);
             break;

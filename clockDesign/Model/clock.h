@@ -17,13 +17,14 @@ public:
     void setClockRight(int clockHand);
     void setClockUp(int clockHand);
     void setClockDown(int clockHand);
-    void setClockWise(bool cw);
+    void setClockWise(bool cw1, bool cw2);
     int getClockHand(int clockHand);
     bool getClockWise();
     void draw(QPainter* painter);
     void move();
     bool getIsMoving();
     void startMoving();
+    void setFastWay(bool fastway);
 
 private:
     //Position of the clock
@@ -35,9 +36,11 @@ private:
     int clockHandFinal_1;
     int clockHandFinal_2;
 
-    bool clockWise;         //rotation clockWise?
+    bool clockWise1;         //rotation clockWise?
+    bool clockWise2;
     int length;             //length of the clock
     bool isMoving;            //Indicate if a clock is moving
+    bool fastway;
 
 };
 

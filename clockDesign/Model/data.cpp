@@ -2,18 +2,26 @@
 
 Data::Data(int width, int height)
 {
+    double percent = 0.71;
+    int ecart = 5;
     nbLine = 5;
     nbColumn = 10;
-    int clockLength = width/proportion;
-    int offsetW = (width-nbColumn*(clockLength+5))/2;
-    int offsetH = (height-nbLine*(clockLength+5))/2;
+    int clockLength = 1;
+    while(((clockLength+ecart)*nbColumn+ecart) < (width*percent))
+    {
+        clockLength++;
+    }
+    double offsetW = (width-nbColumn*(clockLength+ecart)-ecart)/2;
+    double offsetH = (height-nbLine*(clockLength+ecart)-ecart)/2;
 
+    //draw all clocks
     for(int line=0;line<nbLine;line++)
     {
         for(int column=0;column<nbColumn;column++)
         {
-            clock[line][column] = new Clock(offsetW+(clockLength+5)*column,
-                                offsetH+(clockLength+5)*line,clockLength,0,0);
+
+            clock[line][column] = new Clock((int)(offsetW+(clockLength/2)+(clockLength+ecart)*(column)),
+                               (int)(offsetH+(clockLength/2)+(clockLength+ecart)*(line)),clockLength,0,0);
         }
     }
 }
@@ -95,10 +103,18 @@ void Data::setAllClock(int hand1, int hand2){
     }
 }
 
-void Data::setAllClockWise(bool clockWise){
+void Data::setAllClockWise(bool cw1, bool cw2){
     for(int line=0;line<nbLine;line++){
         for(int column=0;column<nbColumn;column++){
-            clock[line][column]->setClockWise(clockWise);
+            clock[line][column]->setClockWise(cw1,cw2);
+        }
+    }
+}
+
+void Data::setFastWay(bool fastWay){
+    for(int line=0;line<nbLine;line++){
+        for(int column=0;column<nbColumn;column++){
+            clock[line][column]->setFastWay(fastWay);
         }
     }
 }

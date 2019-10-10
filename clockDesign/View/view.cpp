@@ -8,10 +8,11 @@ View::View(int x, int y, int width, int height, QString title)
     this->width = width;
     animation1 = new Button(this);
     exit = new Button(this);
+    countDown = new Button(this);
     setupUI();
 
     QObject::connect(&timer,SIGNAL(timeout()),this,SLOT(updateClock()));
-    timer.start(50);
+    timer.start(15);
 }
 
 View::~View(){
@@ -22,6 +23,7 @@ void View::initRelations(Controller* controller){
     this->pController = controller;
     animation1->initEvent(XF::evAnim1,pController);
     exit->initEvent(XF::evExit,pController);
+    countDown->initEvent(XF::evCountdown,pController);
 }
 
 void View::paintEvent(QPaintEvent *event){
@@ -36,6 +38,8 @@ void View::setupUI(){
     animation1->setText("animation 1");
     exit->setGeometry(100,height/2+40,100,40);
     exit->setText("Exit");
+    countDown->setGeometry(100,height/2-100,100,40);
+    countDown->setText("Countdown");
     this->setVisible(true);
 }
 
