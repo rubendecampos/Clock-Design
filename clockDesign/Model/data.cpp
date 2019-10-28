@@ -1,11 +1,12 @@
 #include "data.h"
 
+//Constructor
 Data::Data(int width, int height)
 {
     double percent = 0.71;
     int ecart = 5;
-    nbLine = 5;
-    nbColumn = 10;
+    nbLine = 6;
+    nbColumn = 14;
     int clockLength = 1;
     while(((clockLength+ecart)*nbColumn+ecart) < (width*percent))
     {
@@ -24,18 +25,24 @@ Data::Data(int width, int height)
                                (int)(offsetH+(clockLength/2)+(clockLength+ecart)*(line)),clockLength,0,0);
         }
     }
+
+    QObject::connect(&timer,SIGNAL(timeout()),this,SLOT(updateClock()));
+    timer.start(15);
 }
 
+//Destructor
 Data::~Data()
 {
 
 }
 
+//Initialize the relation
 void Data::initRelations(Observer *observer)
 {
     this->pObserver = observer;
 }
 
+//Draw all object in Data
 void Data::drawALL(QPainter* painter)
 {
     for(int line=0;line<nbLine;line++)
@@ -47,24 +54,30 @@ void Data::drawALL(QPainter* painter)
     }
 }
 
+//Return the clock
 Clock* Data::getClock(int lineIndex, int columnIndex)
 {
 
     return clock[lineIndex][columnIndex];
 }
 
+//Return if a clock has been moved
 bool Data::getClockMoved(){
     return clockMoved;
 }
 
+//Return the number of column
 int Data::getNbColumn(){
     return nbColumn;
 }
 
+//Return the number of line
 int Data::getNbLine(){
     return nbLine;
 }
 
+
+//Update the clock
 void Data::updateClock()
 {
     clockMoved = false;
@@ -87,6 +100,7 @@ void Data::updateClock()
     }
 }
 
+//Start moving all clock
 void Data::startAllClock(){
     for(int line=0;line<nbLine;line++){
         for(int column=0;column<nbColumn;column++){
@@ -95,6 +109,7 @@ void Data::startAllClock(){
     }
 }
 
+//Set the hands of all clock
 void Data::setAllClock(int hand1, int hand2){
     for(int line=0;line<nbLine;line++){
         for(int column=0;column<nbColumn;column++){
@@ -103,6 +118,7 @@ void Data::setAllClock(int hand1, int hand2){
     }
 }
 
+//Set all the clock wise
 void Data::setAllClockWise(bool cw1, bool cw2){
     for(int line=0;line<nbLine;line++){
         for(int column=0;column<nbColumn;column++){
@@ -111,6 +127,8 @@ void Data::setAllClockWise(bool cw1, bool cw2){
     }
 }
 
+//Indicate to data that the clock must go to their final
+//position by the short way (clockWise or not)
 void Data::setFastWay(bool fastWay){
     for(int line=0;line<nbLine;line++){
         for(int column=0;column<nbColumn;column++){

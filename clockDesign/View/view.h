@@ -5,7 +5,6 @@
 #include <QString>
 #include <QPainter>
 #include "Model\data.h"
-#include <QTimer>
 #include "observer.h"
 #include "Controller\controller.h"
 #include "Button\button.h"
@@ -23,8 +22,8 @@ public:
     void paintEvent(QPaintEvent* event);
     void setupUI();
     void changed();
+private slots:
     void stop();
-
 
 private:
     int x;
@@ -33,13 +32,10 @@ private:
     int width;
     QString title;
     Controller* pController;
-    QTimer timer;
+    //QTimer timer;
     Button* animation1;
     Button* exit;
     Button* countDown;
-
-private slots:
-    void updateClock();
 };
 
 #endif // VIEW_H

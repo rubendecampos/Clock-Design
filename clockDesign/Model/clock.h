@@ -17,6 +17,10 @@ public:
     void setClockRight(int clockHand);
     void setClockUp(int clockHand);
     void setClockDown(int clockHand);
+    void setCLockUpLeft(int clockHand);
+    void setClockUpRight(int clockHand);
+    void setClockDownLeft(int clockHand);
+    void setClockDownRight(int clockHand);
     void setClockWise(bool cw1, bool cw2);
     int getClockHand(int clockHand);
     bool getClockWise();

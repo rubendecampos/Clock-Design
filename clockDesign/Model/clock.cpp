@@ -56,6 +56,22 @@ void Clock::setClockDown(int clockHand)
     setClockHand(clockHand,0);
 }
 
+void Clock::setClockDownLeft(int clockHand){
+    setClockHand(clockHand,46);
+}
+
+void Clock::setClockDownRight(int clockHand){
+    setClockHand(clockHand,316);
+}
+
+void Clock::setClockUpRight(int clockHand){
+    setClockHand(clockHand,226);
+}
+
+void Clock::setCLockUpLeft(int clockHand){
+    setClockHand(clockHand,136);
+}
+
 void Clock::setClockWise(bool cw1, bool cw2)
 {
     this->clockWise1 = cw1;

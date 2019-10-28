@@ -2,6 +2,7 @@
 #include <QDesktopWidget>
 #include <QApplication>
 
+//Constructor
 Factory::Factory()
 {
     QString title;
@@ -14,10 +15,12 @@ Factory::Factory()
     controller = new Controller();
 }
 
+//Destructor
 Factory::~Factory(){
 
 }
 
+//Build all the components and their relations
 void Factory::build(){
     view->initRelations(controller);
     controller->initRelations(data);

@@ -1,5 +1,6 @@
 #include "countdown.h"
 
+//Constructor
 Countdown::Countdown(Controller* host)
 {
     this->host = host;
@@ -8,6 +9,7 @@ Countdown::Countdown(Controller* host)
     countDown = 10;
 }
 
+//Animate a countdown
 void Countdown::animate(){
     STATE oldState = state;
 
@@ -63,14 +65,17 @@ void Countdown::animate(){
     }
 }
 
+//Inform the controller that the animation is done
 bool Countdown::isDone(){
     return animDone;
 }
 
+//Set the private argument animDone
 void Countdown::setIsDone(bool isDone){
     animDone = isDone;
 }
 
+//Set the digit in function of the number to display
 void Countdown::animCountDown(){
     switch(countDown){
     case 10:

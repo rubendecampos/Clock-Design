@@ -1,33 +1,31 @@
 #include "controller.h"
 
+//Constructor
 Controller::Controller()
 {
     digClock = new DigitalClock(this);
     anim1 = new Animation1(this);
     countDown = new Countdown(this);
+    letter = new Letter(this);
 }
 
+//Destructor
 void Controller::initialize()
 {
     state = XF::ST_WAIT;
 }
 
-//void Controller::initRelations(Data* data, View* view)
+//Initialize the relation between Controller and Data
 void Controller::initRelations(Data* data)
 {
     this->pData = data;
-    //this->pView = view;
 }
 
+//Called to process an XF event, contain the main
+//state machine
 bool Controller::processEvent(XFEvent *ev){
     bool retval = false;
     XF::CSTATE oldState = state;
-
-    //Exit
-    if(ev->getID() == XF::evExit){
-        //View::stop();
-        pView->stop();
-    }
 
     //transition switch
     switch (state)
@@ -123,7 +121,7 @@ bool Controller::processEvent(XFEvent *ev){
 }
 
 //Modifie the value of the timer, used principaly by
-//the anime classes
+//all the anime classes
 void Controller::setValueTimer(int time){
     valueTimer = time;
 }

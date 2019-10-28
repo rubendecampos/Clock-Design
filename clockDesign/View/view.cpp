@@ -1,5 +1,6 @@
 #include "view.h"
 
+//Constructor
 View::View(int x, int y, int width, int height, QString title)
 {
     this->x = x;
@@ -11,14 +12,15 @@ View::View(int x, int y, int width, int height, QString title)
     countDown = new Button(this);
     setupUI();
 
-    QObject::connect(&timer,SIGNAL(timeout()),this,SLOT(updateClock()));
-    timer.start(15);
+    QObject::connect(exit,SIGNAL(close()),this,SLOT(stop()));
 }
 
+//Destructor
 View::~View(){
 
 }
 
+//Initialize the relation between view and controller
 void View::initRelations(Controller* controller){
     this->pController = controller;
     animation1->initEvent(XF::evAnim1,pController);
@@ -26,11 +28,13 @@ void View::initRelations(Controller* controller){
     countDown->initEvent(XF::evCountdown,pController);
 }
 
+//Update the view by painting all object in pData
 void View::paintEvent(QPaintEvent *event){
     QPainter painter(this);
     pController->pData->drawALL(&painter);
 }
 
+//Setup the User Interface
 void View::setupUI(){
     this->showFullScreen();
     this->setWindowTitle(title);
@@ -41,19 +45,6 @@ void View::setupUI(){
     countDown->setGeometry(100,height/2-100,100,40);
     countDown->setText("Countdown");
     this->setVisible(true);
-}
-
-void View::updateClock()
-{
-    //pController->anim1->animate();
-    /*pController->digClock->set_5(0);
-    pController->digClock->set_7(1);
-    pController->digClock->set_8(2);
-    pController->digClock->set_9(3);
-
-    pController->pData->startAllClock();*/
-    pController->pData->updateClock();
-
 }
 
 //update the view

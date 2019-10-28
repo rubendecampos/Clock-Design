@@ -22,6 +22,8 @@ private:
 private slots:
     void buttonClicked();
 
+signals:
+    void close();
 };
 
 #endif // BUTTON_H

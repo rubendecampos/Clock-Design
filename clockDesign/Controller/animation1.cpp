@@ -1,5 +1,6 @@
 #include "animation1.h"
 
+//Constructor
 Animation1::Animation1(Controller* host)
 {
     this->host = host;
@@ -8,6 +9,7 @@ Animation1::Animation1(Controller* host)
     column = 0;
 }
 
+//Wave of clock
 void Animation1::animate(){
     STATE oldState = state;
 
@@ -73,10 +75,12 @@ void Animation1::animate(){
     }
 }
 
+//Inform the controller that the animation is done
 bool Animation1::isDone(){
     return animDone;
 }
 
+//Set the private argument animDone
 void Animation1::setIsDone(bool isDone){
     animDone = isDone;
 }

@@ -1,10 +1,12 @@
 #include "digitalclock.h"
 
+//Constructor
 DigitalClock::DigitalClock(Controller* host)
 {
     this->host = host;
 }
 
+//Set a 0
 void DigitalClock::set_0(double digit)
 {
     int offset = digit * 2;
@@ -29,6 +31,7 @@ void DigitalClock::set_0(double digit)
     host->pData->getClock(3,2+offset)->setClockUp(2);
 }
 
+//Set a 1
 void DigitalClock::set_1(double digit)
 {
     int offset = digit * 2;
@@ -53,6 +56,7 @@ void DigitalClock::set_1(double digit)
     host->pData->getClock(3,2+offset)->setClockUp(2);
 }
 
+//Set a 2
 void DigitalClock::set_2(double digit)
 {
     int offset = digit * 2;
@@ -77,6 +81,7 @@ void DigitalClock::set_2(double digit)
     host->pData->getClock(3,2+offset)->setClockLeft(2);
 }
 
+//Set a 3
 void DigitalClock::set_3(double digit)
 {
     int offset = digit * 2;
@@ -101,6 +106,7 @@ void DigitalClock::set_3(double digit)
     host->pData->getClock(3,2+offset)->setClockUp(2);
 }
 
+//Set a 4
 void DigitalClock::set_4(double digit)
 {
     int offset = digit * 2;
@@ -125,6 +131,7 @@ void DigitalClock::set_4(double digit)
     host->pData->getClock(3,2+offset)->setClockUp(2);
 }
 
+//Set a 5
 void DigitalClock::set_5(double digit)
 {
     int offset = digit * 2;
@@ -149,6 +156,7 @@ void DigitalClock::set_5(double digit)
     host->pData->getClock(3,2+offset)->setClockLeft(2);
 }
 
+//Set a 6
 void DigitalClock::set_6(double digit)
 {
     int offset = digit * 2;
@@ -173,6 +181,7 @@ void DigitalClock::set_6(double digit)
     host->pData->getClock(3,2+offset)->setClockLeft(2);
 }
 
+//Set a 7
 void DigitalClock::set_7(double digit)
 {
     int offset = digit * 2;
@@ -197,6 +206,7 @@ void DigitalClock::set_7(double digit)
     host->pData->getClock(3,2+offset)->setClockUp(2);
 }
 
+//Set a 8
 void DigitalClock::set_8(double digit)
 {
     int offset = digit * 2;
@@ -221,6 +231,7 @@ void DigitalClock::set_8(double digit)
     host->pData->getClock(3,2+offset)->setClockUp(2);
 }
 
+//Set a 9
 void DigitalClock::set_9(double digit)
 {
     int offset = digit * 2;

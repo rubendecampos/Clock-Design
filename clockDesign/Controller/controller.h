@@ -8,11 +8,13 @@
 #include "digitalclock.h"
 #include "animation1.h"
 #include "countdown.h"
+#include "letter.h"
 #include "View/view.h"
 
 class DigitalClock;
 class Animation1;
 class Countdown;
+class Letter;
 class View;
 
 class Controller: public ISM
@@ -28,10 +30,10 @@ public:
     void setValueTimer(int time);
 
     Data* pData;
-    View* pView;
     DigitalClock* digClock;
     Animation1* anim1;
     Countdown* countDown;
+    Letter* letter;
 int valueTimer = 50;
 private:
     XF::CSTATE state;
