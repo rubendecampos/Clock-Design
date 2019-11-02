@@ -8,6 +8,8 @@ class Letter
 public:
     Letter(Controller* host);
     void setB(int column);
+    void setE(int column);
+    void setX(int column);
 
 private:
     Controller* host;

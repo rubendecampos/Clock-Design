@@ -9,16 +9,16 @@ class DigitalClock
 {
 public:
     DigitalClock(Controller* host);
-    void set_0(double digit);
-    void set_1(double digit);
-    void set_2(double digit);
-    void set_3(double digit);
-    void set_4(double digit);
-    void set_5(double digit);
-    void set_6(double digit);
-    void set_7(double digit);
-    void set_8(double digit);
-    void set_9(double digit);
+    void set_0(double column);
+    void set_1(double column);
+    void set_2(double column);
+    void set_3(double column);
+    void set_4(double column);
+    void set_5(double column);
+    void set_6(double column);
+    void set_7(double column);
+    void set_8(double column);
+    void set_9(double column);
 
 private:
     Controller* host;

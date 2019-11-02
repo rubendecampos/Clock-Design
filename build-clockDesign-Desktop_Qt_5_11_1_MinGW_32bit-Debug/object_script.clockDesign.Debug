@@ -14,6 +14,7 @@ INPUT(
 ./debug\button.o
 ./debug\countdown.o
 ./debug\letter.o
+./debug\animationbex.o
 ./debug\moc_view.o
 ./debug\moc_data.o
 ./debug\moc_xf.o

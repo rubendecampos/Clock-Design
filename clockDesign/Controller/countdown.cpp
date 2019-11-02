@@ -21,6 +21,7 @@ void Countdown::animate(){
         animDone = false;
         break;
     case ST_COUNT:
+        host->pData->setAllClockDownLeft();
         animCountDown();
         host->pData->startAllClock();
         countDown --;
@@ -46,6 +47,7 @@ void Countdown::animate(){
         //action switch
         switch (state){
         case ST_COUNT:
+            host->pData->setAllClockDownLeft();
             animCountDown();
             host->pData->setFastWay(true);
             host->pData->startAllClock();
@@ -79,40 +81,40 @@ void Countdown::setIsDone(bool isDone){
 void Countdown::animCountDown(){
     switch(countDown){
     case 10:
-        host->digClock->set_1(1);
-        host->digClock->set_0(2);
+        host->digClock->set_1(5);
+        host->digClock->set_0(7);
         break;
     case 9:
         //Reset the digits first, because 10 is on two digits
-        host->pData->setAllClock(0,0);
-        host->digClock->set_9(1.5);
+        host->pData->setAllClockDownLeft();
+        host->digClock->set_9(6);
         break;
     case 8:
-        host->digClock->set_8(1.5);
+        host->digClock->set_8(6);
         break;
     case 7:
-        host->digClock->set_7(1.5);
+        host->digClock->set_7(6);
         break;
     case 6:
-        host->digClock->set_6(1.5);
+        host->digClock->set_6(6);
         break;
     case 5:
-        host->digClock->set_5(1.5);
+        host->digClock->set_5(6);
         break;
     case 4:
-        host->digClock->set_4(1.5);
+        host->digClock->set_4(6);
         break;
     case 3:
-        host->digClock->set_3(1.5);
+        host->digClock->set_3(6);
         break;
     case 2:
-        host->digClock->set_2(1.5);
+        host->digClock->set_2(6);
         break;
     case 1:
-        host->digClock->set_1(1.5);
+        host->digClock->set_1(6);
         break;
     case 0:
-        host->digClock->set_0(1.5);
+        host->digClock->set_0(6);
         break;
     }
 }

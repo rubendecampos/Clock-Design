@@ -7,6 +7,7 @@ Controller::Controller()
     anim1 = new Animation1(this);
     countDown = new Countdown(this);
     letter = new Letter(this);
+    bex = new AnimationBex(this);
 }
 
 //Destructor
@@ -38,6 +39,9 @@ bool Controller::processEvent(XFEvent *ev){
         if(ev->getID() == XF::evCountdown){
             state = XF::ST_COUNTDOWN;
         }
+        if(ev->getID() == XF::evBeX){
+            state = XF::ST_BEX;
+        }
         break;
     case XF::ST_ANIM1:
         if(ev->getID() == XF::evWait){
@@ -65,6 +69,19 @@ bool Controller::processEvent(XFEvent *ev){
             state = XF::ST_COUNTDOWN;
         }
         break;
+    case XF::ST_WAIT_BEX:
+        if(ev->getID() == XF::evTimeout){
+            state = XF::ST_BEX;
+        }
+        break;
+    case XF::ST_BEX:
+        if(ev->getID() == XF::evWait){
+            state = XF::ST_WAIT_BEX;
+        }
+        if(ev->getID() == XF::evDone){
+            state = XF::ST_WAIT;
+        }
+        break;
     }
 
     if (oldState != state)
@@ -90,6 +107,8 @@ bool Controller::processEvent(XFEvent *ev){
             }
             break;
         case XF::ST_WAIT1:
+        case XF::ST_WAIT_CD:
+        case XF::ST_WAIT_BEX:
             ev->setID(XF::evTimeout);
             ev->setTarget(this);
             ev->setDelay(valueTimer);
@@ -108,11 +127,18 @@ bool Controller::processEvent(XFEvent *ev){
                 XF::getInstance().pushEvent(ev);
             }
             break;
-        case XF::ST_WAIT_CD:
-            ev->setID(XF::evTimeout);
-            ev->setTarget(this);
-            ev->setDelay(valueTimer);
-            XF::getInstance().pushEvent(ev);
+        case XF::ST_BEX:
+            if(bex->isDone()){
+                bex->setIsDone(false);
+                ev->setID(XF::evDone);
+                ev->setTarget(this);
+                XF::getInstance().pushEvent(ev);
+            }else{
+                bex->animate();
+                ev->setID(XF::evWait);
+                ev->setTarget(this);
+                XF::getInstance().pushEvent(ev);
+            }
             break;
         }
         retval = true;

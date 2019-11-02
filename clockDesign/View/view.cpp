@@ -10,6 +10,7 @@ View::View(int x, int y, int width, int height, QString title)
     animation1 = new Button(this);
     exit = new Button(this);
     countDown = new Button(this);
+    bex = new Button(this);
     setupUI();
 
     QObject::connect(exit,SIGNAL(close()),this,SLOT(stop()));
@@ -26,6 +27,7 @@ void View::initRelations(Controller* controller){
     animation1->initEvent(XF::evAnim1,pController);
     exit->initEvent(XF::evExit,pController);
     countDown->initEvent(XF::evCountdown,pController);
+    bex->initEvent(XF::evBeX,pController);
 }
 
 //Update the view by painting all object in pData
@@ -38,12 +40,14 @@ void View::paintEvent(QPaintEvent *event){
 void View::setupUI(){
     this->showFullScreen();
     this->setWindowTitle(title);
-    animation1->setGeometry(100,height/2-40,100,40);
+    animation1->setGeometry(100,height/2-50,100,40);
     animation1->setText("animation 1");
-    exit->setGeometry(100,height/2+40,100,40);
+    exit->setGeometry(100,height/2+50,100,40);
     exit->setText("Exit");
     countDown->setGeometry(100,height/2-100,100,40);
     countDown->setText("Countdown");
+    bex->setGeometry(100,height/2,100,40);
+    bex->setText("BeX");
     this->setVisible(true);
 }
 

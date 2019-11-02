@@ -24,6 +24,7 @@ public:
     int getNbColumn();
     void startAllClock();
     void setAllClock(int hand1, int hand2);
+    void setAllClockDownLeft();
     void setAllClockWise(bool cw1, bool cw2);
     void setFastWay(bool fastWay);
 

@@ -68,7 +68,7 @@ void Clock::setClockUpRight(int clockHand){
     setClockHand(clockHand,226);
 }
 
-void Clock::setCLockUpLeft(int clockHand){
+void Clock::setClockUpLeft(int clockHand){
     setClockHand(clockHand,136);
 }
 

@@ -118,6 +118,15 @@ void Data::setAllClock(int hand1, int hand2){
     }
 }
 
+void Data::setAllClockDownLeft(){
+    for(int line=0;line<nbLine;line++){
+        for(int column=0;column<nbColumn;column++){
+            clock[line][column]->setClockDownLeft(1);
+            clock[line][column]->setClockDownLeft(2);
+        }
+    }
+}
+
 //Set all the clock wise
 void Data::setAllClockWise(bool cw1, bool cw2){
     for(int line=0;line<nbLine;line++){

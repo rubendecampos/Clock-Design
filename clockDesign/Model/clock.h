@@ -17,7 +17,7 @@ public:
     void setClockRight(int clockHand);
     void setClockUp(int clockHand);
     void setClockDown(int clockHand);
-    void setCLockUpLeft(int clockHand);
+    void setClockUpLeft(int clockHand);
     void setClockUpRight(int clockHand);
     void setClockDownLeft(int clockHand);
     void setClockDownRight(int clockHand);

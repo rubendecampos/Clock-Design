@@ -36,6 +36,7 @@ private:
     Button* animation1;
     Button* exit;
     Button* countDown;
+    Button* bex;
 };
 
 #endif // VIEW_H

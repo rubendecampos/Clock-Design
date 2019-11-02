@@ -29,7 +29,8 @@ SOURCES += \
     Controller/animation1.cpp \
     Button/button.cpp \
     Controller/countdown.cpp \
-    Controller/letter.cpp
+    Controller/letter.cpp \
+    Controller/animationbex.cpp
 
 HEADERS += \
     factory.h \
@@ -46,4 +47,5 @@ HEADERS += \
     Controller/animation1.h \
     Button/button.h \
     Controller/countdown.h \
-    Controller/letter.h
+    Controller/letter.h \
+    Controller/animationbex.h

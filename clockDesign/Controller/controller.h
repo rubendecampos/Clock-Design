@@ -10,12 +10,14 @@
 #include "countdown.h"
 #include "letter.h"
 #include "View/view.h"
+#include "Controller/animationbex.h"
 
 class DigitalClock;
 class Animation1;
 class Countdown;
 class Letter;
 class View;
+class AnimationBex;
 
 class Controller: public ISM
 {
@@ -34,6 +36,7 @@ public:
     Animation1* anim1;
     Countdown* countDown;
     Letter* letter;
+    AnimationBex* bex;
 int valueTimer = 50;
 private:
     XF::CSTATE state;

@@ -14,6 +14,7 @@ INPUT(
 ./release\button.o
 ./release\countdown.o
 ./release\letter.o
+./release\animationbex.o
 ./release\moc_view.o
 ./release\moc_data.o
 ./release\moc_xf.o
