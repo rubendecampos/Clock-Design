@@ -14,7 +14,7 @@ void Letter::setB(int column){
     host->pData->getClock(2,column)->setClockDown(2);
     host->pData->getClock(3,column)->setClockUp(1);
     host->pData->getClock(3,column)->setClockDown(2);
-    host->pData->getClock(4,column)->setClockDown(1);
+    host->pData->getClock(4,column)->setClockUp(1);
     host->pData->getClock(4,column)->setClockDown(2);
     host->pData->getClock(5,column)->setClockUp(1);
     host->pData->getClock(5,column)->setClockRight(2);

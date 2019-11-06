@@ -8,7 +8,7 @@ class Controller;
 class AnimationBex
 {
 public:
-    enum STATE {ST_INIT, ST_START, ST_BEX, ST_END};
+    enum STATE {ST_INIT,ST_START,ST_BEX,ST_END,ST_MOVE};
     AnimationBex(Controller* host);
     void animate();
     bool isDone();
@@ -18,6 +18,7 @@ private:
     Controller* host;
     STATE state;
     int column;
+    int line;
     bool animDone;
 };
 

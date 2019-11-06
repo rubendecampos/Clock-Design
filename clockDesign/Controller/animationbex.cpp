@@ -6,6 +6,7 @@ AnimationBex::AnimationBex(Controller* host)
     state = ST_INIT;
     animDone = false;
     column = 0;
+    line = 0;
 }
 
 //display BEX in with a wave
@@ -17,6 +18,8 @@ void AnimationBex::animate(){
     case ST_INIT:
         state = ST_START;
         animDone = false;
+        column = 0;
+        line = 0;
         break;
     case ST_START:
         if(host->pData->getClockMoved() == false){
@@ -24,6 +27,20 @@ void AnimationBex::animate(){
         }
         break;
     case ST_BEX:
+        for(int l=0;l<=line;l++){
+            for(int c=0;c<=column;c++){
+                host->pData->getClock(l,c)->startMoving();
+            }
+        }
+        //Limit of column or line?
+        if(line < host->pData->getNbLine()-1){
+            line++;
+        }
+        if(column < host->pData->getNbColumn()-1){
+            column++;
+        }
+
+        //All clock stoped?
         if(host->pData->getClockMoved() == false){
             state = ST_END;
         }
@@ -42,7 +59,8 @@ void AnimationBex::animate(){
         switch (state){
         case ST_START:
             host->pData->setAllClock(0,0);
-            host->pData->setFastWay(true);
+            //host->pData->setFastWay(true);
+            host->pData->setAllClockWise(false,true);
             host->pData->startAllClock();
             host->setValueTimer(50);
             break;
@@ -51,12 +69,15 @@ void AnimationBex::animate(){
             host->letter->setB(1);
             host->letter->setE(5);
             host->letter->setX(9);
-            host->pData->startAllClock();
-            host->setValueTimer(2000);
+            //Start the first clock
+            host->pData->getClock(line,column)->startMoving();
+            column++;
+            line++;
+            host->setValueTimer(300);
             break;
         case ST_END:
             host->pData->setAllClock(0,0);
-            host->pData->setFastWay(true);
+            //host->pData->setFastWay(true);
             host->pData->startAllClock();
             host->setValueTimer(50);
             break;
